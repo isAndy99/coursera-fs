@@ -18,3 +18,7 @@ Selectors:
 
 - adjacent selector -> selector + selector
 - general sibling selector -> selector - selector
+
+
+====[ BrowserSync]====
+browser-sync start --server --directory --files "**/*"
