@@ -28,14 +28,8 @@ h1 {
     border: 1px solid #000000;
     background-color: #F2E9E1;
     position: relative;
-    padding-top: 45px;
+    padding: 45px 15px 15px 15px;
     margin: 0px 15px 30px 15px;
-}
-p {
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-    padding-bottom: 15px;
 }
 
 /* Responsive Framework */
