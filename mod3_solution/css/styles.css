@@ -5,6 +5,10 @@ body {
 
 #main-content {
     height: 1500px;
+    color: #f4f4f4;
+}
+#main-content>div {
+    background-color: #01579b;
 }
 
 #main-content h1 {
@@ -15,10 +19,23 @@ body {
     padding-top: 25px;
 }*/
 .navbar-brand h1 {
-    color: #001099;
+    color: #ffca28;
     font-size: 1.8em;
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
     line-height: .75;
+}
+
+#collapsable-nav span {
+    color: #ffca28;
+}
+#header-nav {
+    background-color: #01579b;
+}
+
+@media (max-width: 768px) {
+    #collapsable-nav {
+        background-color: #50a3cc;
+    }
 }
