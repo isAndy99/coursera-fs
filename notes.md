@@ -23,5 +23,7 @@ Selector type | Syntax
   general sibling selector | selector - selector
 
 
+
+## Other
 > ### BrowserSync
 > ``` browser-sync start --server --directory --files "**/*" ```
