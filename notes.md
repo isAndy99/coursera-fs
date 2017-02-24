@@ -63,7 +63,7 @@ Selector type | Syntax
 ## Lecture 42, Part 1: Javascript Types
 ### Object type
 - **Object** is a collection of name/value pairs
-- **Primitive type** represents a single, immutable value
+- **Primitive type** represents a single, immutable value  
 ### Primitive Types:
 - **Boolean**
 - **Undefined** - no values have ever been set (lack of definition) - `undefined`
