@@ -63,17 +63,16 @@ Selector type | Syntax
 ## Lecture 42, Part 1: Javascript Types
 ### Object type
 - **Object** is a collection of name/value pairs
-- **Primitive type** represents a single, immutable value  
-### Primitive Types:
-- **Boolean**
-- **Undefined** - no values have ever been set (lack of definition) - `undefined`
-- **Null** - lack of value - `null`
-- **Number** - double-precision 64-bit floating point (only numeric type in JS)
-  * Integers are a subset of doubles, instead of a separate data type
-- **String** - sequence of characters used to represent Context
-  * single or double quotes
+- **Primitive type** represents a single, immutable value
+  - **Boolean**
+  - **Undefined** - no values have ever been set (lack of definition) - `undefined`
+  - **Null** - lack of value - `null`
+  - **Number** - double-precision 64-bit floating point (only numeric type in JS)
+    * Integers are a subset of doubles, instead of a separate data type
+  - **String** - sequence of characters used to represent Context
+    * single or double quotes
 
-- Symbol - new to ES6
+  - Symbol - new to ES6
 
 
 ## Lecture 42, Part 2: Javascript Types
