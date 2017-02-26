@@ -421,6 +421,139 @@ document.addEventListener("DOMContentLoaded",
 //   .onclick = sayHello;
 ```
 
+## HTTP Basics
+Based on request/response stateless protocol:
+  - Client opens connection to server
+  - Client sends HTTP request for a resource
+  - Server sends HTTP response to the client (w/ resource)
+  - Server closes connection to server
+
+**URN**: Uniform Resource Name
+  - Uniquely identifies resource or name of resource
+  - Does not tell us how to get the resource
+  - *Example: "HTML/CSS/Javascript/Web Developers/Yaakov/Chaikin"*
+
+**URI**: Uniform Resource Identifier
+  - Uniquely identifies resource or location of resource
+  - Does not necessarily tell us how to get the resource
+  - *Example: /official_web_site/index.html*
+
+**URL**: Uniform Resource Locator
+  - Form of URI that provides info on how to get resource
+  - *Example: http://www.mysite.com/official_web_site/index.html*
+
+> ### HTTP Methods
+> **GET**
+> - Retrieves the resource
+> - Data is passed to server as part of the URI (_i.e. query string_)
+>
+> **POST**
+> - Sends data to server in order to be processed
+> - Data is sent in the message body
+
+## Lecture 57: Ajax Basics
+*ajax-utils.js*
+``` javascript
+(function (global) {
+
+// Set up a namespace for our utility
+var ajaxUtils = {};
+
+
+// Returns an HTTP request object
+function getRequestObject() {
+  if (global.XMLHttpRequest) {
+    return (new XMLHttpRequest());
+  } 
+  else if (global.ActiveXObject) {
+    // For very old IE browsers (optional)
+    return (new ActiveXObject("Microsoft.XMLHTTP"));
+  } 
+  else {
+    global.alert("Ajax is not supported!");
+    return(null); 
+  }
+}
+
+
+// Makes an Ajax GET request to 'requestUrl'
+ajaxUtils.sendGetRequest = 
+  function(requestUrl, responseHandler) {
+    var request = getRequestObject();
+    request.onreadystatechange = 
+      function() { 
+        handleResponse(request, responseHandler); 
+      };
+    request.open("GET", requestUrl, true);
+    request.send(null); // for POST only
+  };
+
+
+// Only calls user provided 'responseHandler'
+// function if response is ready
+// and not an error
+function handleResponse(request,
+                        responseHandler) {
+  if ((request.readyState == 4) &&
+     (request.status == 200)) {
+    responseHandler(request);
+  }
+}
+
+// Expose utility to the global object
+global.$ajaxUtils = ajaxUtils;
+
+})(window);
+```
+
+*script.js*
+``` javascript
+// Event handling
+document.addEventListener("DOMContentLoaded",
+  function (event) {
+    
+    // Unobtrusive event binding
+    document.querySelector("button")
+      .addEventListener("click", function () {
+        
+        // Call server to get the name
+        $ajaxUtils
+          .sendGetRequest("data/name.txt", 
+            function (request) {
+              var name = request.responseText;
+
+              document.querySelector("#content")
+                .innerHTML = "<h2>Hello " + name + "!</h2>";
+            });
+      });
+  }
+);
+```
+
+## Lecture 59: jQuery
+``` javascript
+$(function () { // Same as document.addEventListener("DOMContentLoaded"...
+
+  // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
+  $("#navbarToggle").blur(function (event) {
+    var screenWidth = window.innerWidth;
+    if (screenWidth < 768) {
+      $("#collapsable-nav").collapse('hide');
+    }
+  });
+
+  // In Firefox and Safari, the click event doesn't retain the focus
+  // on the clicked button. Therefore, the blur event will not fire on
+  // user clicking somewhere else in the page and the blur event handler
+  // which is set up above will not be called.
+  // Refer to issue #28 in the repo.
+  // Solution: force focus on the element that the click event fired on
+  $("#navbarToggle").click(function (event) {
+    $(event.target).focus();
+  });
+});
+```
+
 
 
 # Other
